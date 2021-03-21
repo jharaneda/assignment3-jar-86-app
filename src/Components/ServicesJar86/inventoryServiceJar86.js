@@ -18,3 +18,12 @@ export async function addItemJar86(newItem) {
       body: itemData,
     }).then((response) => response.json());
   }
+
+  export async function removeItemJar86(deleteItem) {
+    const itemData = JSON.stringify(deleteItem);
+    return fetch("http://localhost:8000/cartJar86", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: itemData,
+    }).then((response) => response.json());
+  }
