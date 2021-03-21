@@ -9,3 +9,12 @@ export async function getInventory(newItem) {
     response.json()
   );
 }
+
+export async function addItemJar86(newItem) {
+    const itemData = JSON.stringify(newItem);
+    return fetch("http://localhost:8000/cartJar86", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: itemData,
+    }).then((response) => response.json());
+  }
