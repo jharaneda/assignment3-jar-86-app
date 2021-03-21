@@ -15,9 +15,26 @@ const ProductListJar86 = ({ inventory, addAction }) => {
             </tr>
           </thead>
           <tbody>
-            <tr><td>
+            {inventory.map((product, key) => (
+              <tr key={key}>
+                <td>{product.sku}</td>
+                <td>{product.name}</td>
+                <td>{product.quantity < 0 ? 0: product.quantity}</td>
+                <td>$ {product.price}</td>
+                <td>
+                  {product.quantity <= 0 ? (
+                    <button className="btn btn-secondary" disabled>OUT OF STOCK</button>
+                  ) : (
+                    <button
+                      className="btn btn-success"
+                      onClick={(e) => addAction(product.sku)}
+                    >
+                      Add
+                    </button>
+                  )}
                 </td>
               </tr>
+            ))}
           </tbody>
         </table>
       </div>
