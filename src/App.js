@@ -75,6 +75,12 @@ function App() {
     await refreshPage();
   }
 
+  async function checkoutCart() {
+    await checkout();
+    await refreshPage();
+    setTotal({total:0});
+  }
+
   return <div className="App">
     <HeaderJar86 />
       <ProductListJar86 inventory={inventory} addAction={addItem} />
