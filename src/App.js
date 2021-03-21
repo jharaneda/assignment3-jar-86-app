@@ -58,7 +58,33 @@ function App() {
       });
   }
 
-  return <div className="App">algo</div>;
+  async function addItem(sku) {
+    var skuID = sku;
+    let itemIndex = inventory
+      .map((index) => index.sku)
+      .indexOf(skuID.toString());
+
+    var newItem = {
+      sku: skuID,
+      name: inventory[itemIndex].name,
+      quantity: inventory[itemIndex].quantity,
+      price: inventory[itemIndex].price,
+    };
+
+    await addItemJar86(newItem);
+    await refreshPage();
+  }
+
+  return <div className="App">
+    <HeaderJar86 />
+      <ProductListJar86 inventory={inventory} addAction={addItem} />
+      <CartJar86
+        cart={cart}
+        checkoutAction={checkoutCart}
+        deleteAction={deleteItemFromCart}
+        totalInfo={total.total.toFixed(2)}
+      />
+  </div>;
 }
 
 export default App;
