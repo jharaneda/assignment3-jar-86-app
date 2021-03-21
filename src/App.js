@@ -81,6 +81,23 @@ function App() {
     setTotal({total:0});
   }
 
+  async function deleteItemFromCart(skuItem) {
+    let itemSku = { sku: skuItem };
+    await removeItemJar86(itemSku);
+    await refreshPage();
+  }
+
+  if (loading)
+    return (
+      <div className="alert alert-info">
+        Please stand by while we connect your call....
+      </div>
+    );
+  if (error)
+    return (
+      <div className="alert alert-danger">There was an error loading...</div>
+    );
+
   return <div className="App">
     <HeaderJar86 />
       <ProductListJar86 inventory={inventory} addAction={addItem} />
