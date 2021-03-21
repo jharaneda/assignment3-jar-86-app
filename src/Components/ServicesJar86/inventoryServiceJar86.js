@@ -27,3 +27,10 @@ export async function addItemJar86(newItem) {
       body: itemData,
     }).then((response) => response.json());
   }
+
+  export async function checkout() {
+    return fetch("http://localhost:8000/cartJar86/checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    }).then((response) => response.json());
+  }
