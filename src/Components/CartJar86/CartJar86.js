@@ -14,10 +14,21 @@ const CartJar86 = ({ cart, checkoutAction, deleteAction, totalInfo }) => {
             </tr>
           </thead>
           <tbody>
-              <tr>
-                  <td>
+            {cart.map((product, key) => (
+              <tr key={key}>
+                <td>{product.name}</td>
+                <td>{product.quantity}</td>
+                <td>$ {product.price.toFixed(2)}</td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={(e) => deleteAction(product.sku)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
+            ))}
             <tr>
               <td>
                 <button className="btn btn-primary" onClick={checkoutAction}>
