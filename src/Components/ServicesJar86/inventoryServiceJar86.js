@@ -42,8 +42,8 @@ export async function removeItemJar86(deleteItem) {
 }
 
 export async function checkout() {
-  return fetch("http://localhost:8000/cartJar86/checkout", {
-    return fetch("http://localhost:8000/cartJar86/checkout", {
+//   return fetch("http://localhost:8000/cartJar86/checkout", {
+    return fetch("http://35.153.66.33/cartJar86/checkout", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
   }).then((response) => response.json());
