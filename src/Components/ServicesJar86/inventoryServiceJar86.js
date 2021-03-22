@@ -9,14 +9,14 @@ return fetch("http://35.153.66.33:8000/cartJar86").then((response) =>
 
 export async function getInventory(newItem) {
 //   return fetch("http://localhost:8000/inventoryJar86").then((response) =>
-return fetch("http://35.153.66.33:8000/cartJar86").then((response) =>
+return fetch("http://35.153.66.33:8000/inventoryJar86").then((response) =>
     response.json()
   );
 }
 
 export async function getTotals() {
 //   return fetch("http://localhost:8000/cartJar86/totals").then((response) =>
-return fetch("http://35.153.66.33:8000/cartJar86").then((response) =>
+return fetch("http://35.153.66.33:8000/cartJar86/totals").then((response) =>
     response.json()
   );
 }
