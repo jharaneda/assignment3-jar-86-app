@@ -12,6 +12,7 @@ import {
 } from "./Components/ServicesJar86/inventoryServiceJar86";
 
 function App() {
+  //useState
   const [inventory, setInventory] = useState([]);
   const [loading, setLoading] = useState();
   const [error, setError] = useState();
@@ -20,10 +21,12 @@ function App() {
     total: 0,
   });
 
+  //useEffect call refreshPage function
   useEffect(() => {
     refreshPage();
   }, []);
 
+  //refreshPage will get all the data from the Webservice
   async function refreshPage() {
     setLoading(true);
 
@@ -58,6 +61,7 @@ function App() {
       });
   }
 
+  //addItem function, get the SKU, create an object and passing it to the WS
   async function addItem(sku) {
     var skuID = sku;
     let itemIndex = inventory
@@ -75,12 +79,14 @@ function App() {
     await refreshPage();
   }
 
+  //Checkout function, subtract the quantity from cart to inventory
   async function checkoutCart() {
     await checkout();
     await refreshPage();
     setTotal({total:0});
   }
 
+  //delete the item from the cart
   async function deleteItemFromCart(skuItem) {
     let itemSku = { sku: skuItem };
     await removeItemJar86(itemSku);
